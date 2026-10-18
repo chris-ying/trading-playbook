@@ -1,0 +1,77 @@
+.navbar {
+  height: 68px;
+  border-bottom: 1px solid var(--border);
+  background: #0b111c;
+}
+
+.navInner {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #e8edf5;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brandLogo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.brandMuted {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navLinks a {
+  color: #94a3b8;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.navLinks a:hover,
+.navLinks .activeLink {
+  color: #e8edf5;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    height: auto;
+  }
+
+  .navInner {
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .navLinks {
+    gap: 18px;
+  }
+
+  .localBadge {
+    display: none;
+  }
+}

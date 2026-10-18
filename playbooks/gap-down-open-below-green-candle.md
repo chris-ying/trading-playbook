@@ -1,0 +1,16 @@
+# GAP DOWN OPEN BELOW GREEN CANDLE  
+  
+Example: Oct 13 Wednesday  
+  
+- OCT 8 GAP DOWN BELOW GREEN CANDLE  
+- OCT 9 GAP HIGH CLOSE RED  
+- MONDAY MU REJECTED AT KEY LEVEL  
+- MONDAY CLOSE BELOW VWAP  
+  
+WHAT TO DO:  
+- STOP SELL AT OPEN  
+- EXPECT BLOODY RED DAY  
+- HOLD DO NOT BUY UNTIL FILL THE GAP  
+  
+  
+![• Invesco QO Trust Series 1-5- NASDAO C N 0728.00 H728.00 L727.00 C727.00 -0.26 (-0.04%](/charts/gap-down-open-below-green-candle/chart-1.png)  
