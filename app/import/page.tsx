@@ -30,7 +30,8 @@ export default async function ImportPage({
 
           <input
             type="file"
-            name="file"
+            id="archive"
+            name="archive"
             accept=".zip"
             required
             className={styles.fileInput}

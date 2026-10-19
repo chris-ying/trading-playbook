@@ -28,7 +28,7 @@ export default async function PlaybookPage({ params }: Props) {
 
         <div className={styles.content}>
           <ReactMarkdown>
-            {playbook.content.replace(/^#\s+.+(?:\r?\n|$)/, "")}
+            {playbook.content.replace(/(^#\s+.+(?:\r?\n|$))|\+\+/gm, "")}
           </ReactMarkdown>
         </div>
         
