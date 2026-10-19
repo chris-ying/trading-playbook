@@ -26,7 +26,7 @@ export default async function PlaybooksPage() {
           <div className={styles.headerRight}>
             <span>{playbooks.length} playbooks</span>
             <Link href="/import" className={styles.importButton}>
-              + Import Playbooks
+              Import Playbooks
             </Link>
           </div>
         </div>
