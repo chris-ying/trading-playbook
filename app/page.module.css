@@ -56,7 +56,7 @@
 .search textarea {
   display: block;
   width: 100%;
-  min-height: 150px;
+  min-height: 100px;
   box-sizing: border-box;
   padding: 16px;
   background: #090f1a;
@@ -198,6 +198,7 @@
   font-size: 17px;
   font-weight: 700;
   line-height: 1.4;
+  text-transform: uppercase;
 }
 
 .cardFooter {

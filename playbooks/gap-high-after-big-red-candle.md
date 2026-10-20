@@ -5,12 +5,11 @@ PEOPLE STUCK WITH SHARES WILL TRY TO SELL AT RESISTANCE
 Example: Mar 30, Apr 8,  Jun 9, Jul 27, Aug 19  
   
 - ****++SELL BEFORE OPEN / AT OPEN++****  
-- **++SELL WHEN QQQ AT 20EMA++**  
 - ****EXPECT SELLOFF AT OPEN****  
 - **++SELL AT PREMARKET HIGH++**  
 - **SELL AT BREAKEVEN HOLD CASH**  
 - ****++DO NOT BUY BACK BELOW 9EMA++****  
-- Expect Complete Pullback to Open / Previous Close Price  
+- ****Expect Complete Pullback to Open / Previous Close Price****  
   
 *****DO NOT SELL ON TUESDAY ABOVE VWAP* July 21, 2026****  
   

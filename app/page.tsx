@@ -28,7 +28,12 @@ export default function Home() {
 
       try {
         const matches = await matchScenarios(query);
-        setResults(matches);
+
+        const filteredMatches = matches
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 5);
+
+        setResults(filteredMatches);
         setSearched(true);
       } catch {
         setError("Search failed. Please try again.");
@@ -71,7 +76,7 @@ export default function Home() {
               onClick={handleSearch}
               disabled={isPending || !query.trim()}
             >
-              {isPending ? "Searching..." : "Match my playbooks →"}
+              {isPending ? "Searching..." : "Match My Playbooks"}
             </button>
           </div>
         </section>

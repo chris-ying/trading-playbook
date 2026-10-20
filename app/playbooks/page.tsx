@@ -57,7 +57,7 @@ export default async function PlaybooksPage() {
                 <h3>{playbook.title}</h3>
 
                 <p className={styles.excerpt}>
-                  {getExcerpt(playbook.content)}
+                  {getExcerpt(playbook.content).replace(/\+\+|\*+/g, "")}
                 </p>
 
                 <span className={styles.readLink}>
