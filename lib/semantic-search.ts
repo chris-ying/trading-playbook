@@ -26,6 +26,33 @@ function cleanContent(content: string): string {
     .slice(0, MAX_CONTENT_LENGTH);
 }
 
+function matchesSetup(query: string, title: string): boolean {
+  const q = normalize(query);
+  const t = normalize(title);
+
+  const gapHigh = /\bgap (?:high|up)\b/;
+  const gapDown = /\bgap down\b/;
+
+  // Opposite opening gaps are different trade setups.
+  if (gapHigh.test(q) && gapDown.test(t)) return false;
+  if (gapDown.test(q) && gapHigh.test(t)) return false;
+
+  // Candle color is a defining condition, not an interchangeable keyword.
+  const greenCandle = /\b(?:green|bullish) candle\b/;
+  const redCandle = /\b(?:red|bearish) candle\b/;
+  if (greenCandle.test(q) && redCandle.test(t)) return false;
+  if (redCandle.test(q) && greenCandle.test(t)) return false;
+
+  // When both sides describe the 20 EMA, reject an opposite price position.
+  const ema20 = /\b20 (?:day )?ema\b|\b20ema\b/;
+  if (ema20.test(q) && ema20.test(t)) {
+    if (/\bbelow\b/.test(q) && /\babove\b/.test(t)) return false;
+    if (/\babove\b/.test(q) && /\bbelow\b/.test(t)) return false;
+  }
+
+  return true;
+}
+
 function cosineSimilarity(a: number[], b: number[]): number {
   let dot = 0;
   let aNorm = 0;
@@ -41,7 +68,9 @@ function cosineSimilarity(a: number[], b: number[]): number {
 }
 
 export async function searchPlaybooks(query: string) {
-  const playbooks = await getPlaybooks();
+  const playbooks = (await getPlaybooks()).filter((playbook) =>
+    matchesSetup(query, playbook.title)
+  );
   if (playbooks.length === 0) return [];
 
   const normalizedQuery = normalize(query);
