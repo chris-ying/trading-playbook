@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Trading Playbook logo</title>
+  <desc id="desc">Mint green rising zigzag arrow on a dark green rounded-square background, without a dot at its starting point.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#001b1a"/>
+      <stop offset="0.58" stop-color="#003a32"/>
+      <stop offset="1" stop-color="#057d60"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#00332e"/>
+      <stop offset="0.7" stop-color="#076d58"/>
+      <stop offset="1" stop-color="#0ce6a0"/>
+    </linearGradient>
+    <linearGradient id="arrow" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#0bdca2"/>
+      <stop offset="0.55" stop-color="#1cf0b2"/>
+      <stop offset="1" stop-color="#72ffd1"/>
+    </linearGradient>
+  </defs>
+  <rect x="24" y="24" width="464" height="464" rx="94" fill="url(#bg)" stroke="url(#edge)" stroke-width="5"/>
+  <path d="M115 348 L220 247 L290 304 L397 192" fill="none" stroke="url(#arrow)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M322 192 H397 V267" fill="none" stroke="url(#arrow)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

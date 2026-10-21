@@ -48,7 +48,7 @@ export default function Home() {
 
         <div className={styles.intro}>
           <h1>
-            Trading <span>Playbooks.</span>
+            Trading <span>Playbooks</span>
           </h1>
         </div>
 
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
 
           <p className={styles.description}>
-            Describe the price action or market conditions you're seeing.
+            Describe price action, indicators, and sequence of events.
           </p>
 
           <textarea
@@ -71,7 +71,6 @@ export default function Home() {
           />
 
           <div className={styles.searchFooter}>
-            <span>Describe price action, indicators, and sequence of events</span>
             <button
               onClick={handleSearch}
               disabled={isPending || !query.trim()}
@@ -90,8 +89,7 @@ export default function Home() {
             </div>
 
             <p className={styles.resultsNote}>
-              Scores indicate text similarity, not confirmed trade setups
-              or probabilities.
+              Similarity scores reflect how closely each playbook matches your search, not the probability of success.
             </p>
 
             {results.length === 0 && (
