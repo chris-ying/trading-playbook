@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import { matchScenarios } from "./actions";
 import styles from "./page.module.css";
@@ -11,6 +11,8 @@ type Match = {
   score: number;
 };
 
+const SEARCH_STORAGE_KEY = "playbookSearch";
+
 export default function Home() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Match[]>([]);
@@ -18,8 +20,31 @@ export default function Home() {
   const [error, setError] = useState("");
   const [isPending, startTransition] = useTransition();
 
+  useEffect(() => {
+    const saved = sessionStorage.getItem(SEARCH_STORAGE_KEY);
+    if (!saved) return;
+
+    try {
+      const stored = JSON.parse(saved);
+      if (
+        typeof stored.query !== "string" ||
+        !Array.isArray(stored.results) ||
+        typeof stored.searched !== "boolean"
+      ) {
+        throw new Error("Invalid stored search");
+      }
+
+      setQuery(stored.query);
+      setResults(stored.results);
+      setSearched(stored.searched);
+    } catch {
+      sessionStorage.removeItem(SEARCH_STORAGE_KEY);
+    }
+  }, []);
+
   function handleSearch() {
-    if (!query.trim()) return;
+    const searchQuery = query.trim();
+    if (!searchQuery) return;
 
     startTransition(async () => {
       setError("");
@@ -27,7 +52,7 @@ export default function Home() {
       setSearched(false);
 
       try {
-        const matches = await matchScenarios(query);
+        const matches = await matchScenarios(searchQuery);
 
         const filteredMatches = matches
           .sort((a, b) => b.score - a.score)
@@ -35,6 +60,15 @@ export default function Home() {
 
         setResults(filteredMatches);
         setSearched(true);
+
+        sessionStorage.setItem(
+          SEARCH_STORAGE_KEY,
+          JSON.stringify({
+            query: searchQuery,
+            results: filteredMatches,
+            searched: true,
+          })
+        );
       } catch {
         setError("Search failed. Please try again.");
       }
@@ -43,9 +77,7 @@ export default function Home() {
 
   return (
     <main className={styles.home}>
-
       <div className={styles.container}>
-
         <div className={styles.intro}>
           <h1>
             Trading <span>Playbooks</span>
