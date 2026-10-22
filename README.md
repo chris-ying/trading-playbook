@@ -1,3 +1,4 @@
+
 # Trading Playbook
 
 A personal, local-first web app for organizing trading playbooks and matching market descriptions to relevant trading notes using AI semantic search.
@@ -5,7 +6,8 @@ A personal, local-first web app for organizing trading playbooks and matching ma
 ## Features
 
 - **Playbook Matcher:** Describe market conditions in plain English and find similar playbooks.
-- **Local semantic search:** Uses Transformers.js and the `Xenova/all-MiniLM-L6-v2` embedding model. No OpenAI API key is needed.
+- **AI semantic search:** Uses OpenAI's `text-embedding-3-small` model to match market scenarios with relevant playbooks.
+- **Search history:** Preserves search queries and results when navigating between playbooks or refreshing the page.
 - **Playbook library:** Browse Markdown trading notes with chart thumbnails.
 - **Playbook details:** Read the original Markdown and view TradingView chart screenshots.
 - **ZIP import:** Import Markdown notes and their attached images.
@@ -17,7 +19,7 @@ Similarity scores reflect text similarity, **not** trading probabilities or reco
 
 ### Playbook Matcher
 
-Describe market conditions and find related trading playbooks with local AI semantic search.
+Describe market conditions and find related trading playbooks with AI semantic search.
 
 ![Playbook Matcher](screenshots/playbook-matcher.png)
 
@@ -38,7 +40,7 @@ Import exported Markdown notes and their attached screenshots from a ZIP file.
 - Next.js (App Router)
 - React and TypeScript
 - CSS Modules
-- Transformers.js
+- OpenAI API (`text-embedding-3-small`)
 - Markdown files stored locally
 
 ## Getting started
@@ -46,17 +48,29 @@ Import exported Markdown notes and their attached screenshots from a ZIP file.
 ### Prerequisites
 
 - Node.js and npm
+- OpenAI API key
 
 ### Install and run
 
 ```bash
 npm install
+```
+
+Create a `.env.local` file in the project root:
+
+```env
+OPENAI_API_KEY=your_api_key_here
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-The first semantic search may take longer while the embedding model is downloaded and initialized.
+Semantic search requires an internet connection to access the OpenAI API.
 
 ## How to use
 
@@ -78,16 +92,11 @@ app/
 components/               # Shared UI such as Navbar
 lib/
   playbooks.ts            # Read local Markdown playbooks
-  semantic-search.ts      # Embeddings and similarity ranking
+  semantic-search.ts      # OpenAI embeddings and similarity ranking
   import-playbooks.ts     # ZIP import logic
 playbooks/                # Markdown notes
 public/charts/            # Imported chart screenshots
 ```
-
-## Future improvements
-
-- OpenAI-powered matching and explanations
-- Better ranking of exact-title matches and trading-specific conditions
 
 ## Disclaimer
 
